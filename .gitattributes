@@ -1,0 +1,13 @@
+# Word's custom dictionaries are stored in UTF-16 lower endian encoding
+# with a byte order mark (BOM), which does not agree will with Git.
+#
+# This file enables diff'ing of *.dic files with Git.
+# See https://stackoverflow.com/q/777949/270712.
+# 
+# Note that the diff driver "utf16diff" must be defined in ~/.gitconfig:
+# 
+# [diff "utf16diff"]
+#   textconv = iconv -f utf-16 -t utf-8
+
+*.dic text diff=utf16diff working-tree-endocing=UTF-16LE-BOM eol=CRLF
+
